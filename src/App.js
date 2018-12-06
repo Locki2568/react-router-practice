@@ -4,7 +4,7 @@ import './App.css';
 import { Switch, Route, Link } from "react-router-dom";
 import NotFoundPage from './components/NotFoundPage'
 import About from './components/About'
-import Introduction from './components/Introduction'
+import User from './components/User'
 
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/intro">Intro.</Link>
+                <Link to="/user">User</Link>
               </li>
             </ul>
           </nav>
@@ -28,7 +28,10 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component ={()=><h1>home page</h1>}></Route>
             <Route path="/about" component={About}/>
-            <Route path="/intro" component={Introduction}></Route>
+            <Route path="/user/:userid" component = {({match}) =>{
+              return <h1>hello user {match.params.userid} </h1> 
+            }}/>
+            <Route path="/user" component={User}></Route>
             <Route component = {NotFoundPage}/>
           </Switch>
         </div>
